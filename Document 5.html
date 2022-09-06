@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document 5</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      /* 
+        background-color
+        background-image
+        background-repeat
+        background-attachment
+        background-position
+        background-size
+
+        background: color, image, repeat, attachment, position, size
+      */
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      /* .box {
+        background-image: repeating-linear-gradient(
+            to right,
+            rgba(255, 0, 0, 0.7),
+            rgba(113, 29, 198, 0.7)
+          ),
+          url("assets/images/img1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-attachment: scroll;
+        padding: 150px 20px;
+        color: white;
+      } */
+      .box {
+        background-image: url("assets/images/img1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-attachment: scroll;
+        padding: 150px 20px;
+        /* mix-blend-mode: multiply; */
+        color: white;
+        position: relative;
+        z-index: 1;
+      }
+      .box::before {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.7)
+        );
+        z-index: 0;
+        mix-blend-mode: multiply;
+      }
+      .box h1 {
+        margin-top: 0;
+      }
+      .box h1,
+      .box p {
+        position: relative;
+      }
+
+      /* Modal CSS Start */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 4;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s linear;
+      }
+      .modal {
+        background: #aaa;
+        max-width: 400px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 5;
+        transform: translateX(-50%);
+        width: 100%;
+        border-radius: 30px;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: top 0.15s linear;
+      }
+      .show-modal {
+        visibility: visible;
+        opacity: 1;
+      }
+      .search {
+        position: relative;
+      }
+      .search::before {
+        content: "\f002";
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        font-weight: 900;
+        font-family: "FontAwesome";
+        color: purple;
+        cursor: pointer;
+      }
+      .search input {
+        width: 100%;
+        padding: 1em;
+        display: block;
+      }
+      /* Modal CSS End */
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>This is heading</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis tempore
+        dolorem reprehenderit saepe doloribus, voluptates explicabo delectus
+        incidunt. Inventore harum delectus eaque eum? Explicabo facere quos
+        veritatis pariatur placeat corrupti?
+      </p>
+    </div>
+
+    <button onClick="showModal()">Show Modal</button>
+
+    <div class="modal-overlay" onClick="closeModal()"></div>
+    <div class="modal">
+      <div class="search">
+        <input type="text" placeholder="Search" name="" id="" />
+      </div>
+    </div>
+
+    <script>
+      const showModal = () => {
+        const modalOverlay = document.querySelector(".modal-overlay");
+        const modal = document.querySelector(".modal");
+        modalOverlay.classList.add("show-modal");
+        modal.classList.add("show-modal");
+        modal.style.top = "6%";
+      };
+
+      const closeModal = () => {
+        const modalOverlay = document.querySelector(".modal-overlay");
+        const modal = document.querySelector(".modal");
+        modalOverlay.classList.remove("show-modal");
+        modal.classList.remove("show-modal");
+        modal.style.top = "0";
+      };
+    </script>
+  </body>
+</html>

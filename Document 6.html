@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input Type</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins";
+        font-weight: 600;
+      }
+      .main {
+        width: 300px;
+        height: 100vh;
+        background-color: #000;
+      }
+      .child {
+        height: 0;
+        background-color: #f00;
+        transition: height 0.2s cubic-bezier(1, 0.3, 1, 0.3);
+      }
+      .main:hover .child {
+        height: 100%;
+      }
+      .child span {
+        display: block;
+        line-height: 1.5em;
+        color: #000;
+        padding: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="child">
+        <span>Home</span>
+        <span>About</span>
+        <span>Services</span>
+        <span>Portfolio</span>
+        <span>Gallery</span>
+        <span>Contact</span>
+      </div>
+    </div>
+  </body>
+</html>
